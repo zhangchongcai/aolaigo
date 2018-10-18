@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        a{text-decoration: none;}
+        a:hover{color: red}
+        header{height: 115px;}
+        #logo{width: 1200px;height: 115px;margin: 0 auto}
+        #mainn{width: 1200px;margin: 30px auto;height: 558px;overflow: hidden;}
+        #biglogo{float: left;width: 673px;height: 558px;}
+        #bigbox{float: right;width: 340px;height: 420px;border: 1px solid #d0d0d0;margin-top: 50px;}
+        .titleheader{font-size: 14px;position: relative;margin: 0;background: #f5f5f5;height: 50px;line-height: 50px;}
+        .titleheader span:nth-child(2){color: darkred;position: absolute;right: 0;}
+        #fot{width: 1200px;margin: 0 auto}
+        .til{margin: 0 20px 20px 20px}
+        label{display: inline-block;width: 65px;font-size: 14px}
+        .cont{padding: 20px;padding-bottom: 0 ;text-align: center;}
+        p{height: 67px;text-align: left;position: relative;color: #666}
+        #yzk{width: 100px;}
+        #yzma{margin-left: 20px;display: inline-block;width: 50px;cursor: pointer;background: steelblue;}
+        .pd{margin-top: 10px;text-align: left;color: red;width: 250px}
+        input{height: 26px;width: 150px;border-radius:5px;padding: 0 40px 0 10px;}
+        .icon{position: absolute;width: 40px;height: 40px;right: 30px;top: -5px; background: url("../images/register-icon/man.png");}
+        .key{background: url("../images/register-icon/icon_sign_up_key.png")}
+        button{width: 265px;height: 40px;margin-top: 10px;margin: 0 auto;background: #C81417;border-radius:5px;color: white; cursor: pointer;}
+        button:hover{background: #e92629}
+        .xieyiconten{height: 25px;font-size: 12px;text-align: right; margin-top: 10px; }
+        #xieyi{width: 15px;height: 15px;vertical-align: middle;}
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo"><img src="../images/register-icon/1.jpg" alt=""></div>
+    </header>
+    <main>
+        <div id="mainn">
+            <div <div id="biglogo"><img src="../images/register-icon/biglogo.jpg" alt=""></div>
+            <div id="bigbox">
+                <p class="titleheader"><span class="til">注册华盛奥莱会员</span><span class="til"><a href="login.html">已有账户，登录</a> </span></p>
+                <div class="cont">
+                    <p><label for="username">注册账号</label><input type="text" id="username"> <span class="icon"></span>   <label class="pd" id="pdusername"></label></p> 
+                    <p><label for="password1">输入密码</label><input type="text" id="password1"> <span class="icon key"></span> <label class="pd" id="pdpassword1"></label></p>
+                    <p><label for="password2">确定密码</label><input type="text" id="password2" > <span class=" icon key"></span> <label class="pd" id="pdpassword2"></label></p>
+                    <p class=""><label for="yanzheng">验证码</label><input type="text"id="yzk" ><i id="yzma">zyxz</i>      <label class="pd" id="pdyanzhengma"></label></p>
+                    <button value="注册" id="commit">注册</button>
+                    <p class="xieyiconten"><input type="checkbox" id="xieyi" checked><a href="#">《奥莱购会员协议》</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+    </main>
+    <footer>
+        <div id="fot">
+            <iframe src="footer.html" frameborder="0" width="1200px" height="550px" scrolling="no"></iframe>
+        </div>
+    </footer>
+    
+</body>
+</html>
+<script src="../js/jquery-1.10.1.min.js"></script>
+<script>
+    var ronds=[];
+    var boolean = true;
+    $("#username").blur(function(){
+        var str = $(this).val();
+        // pattern = /13[0-9]{1}\d{8}|15[1235689]\d{8}|188\d{8}/;
+        pattern = /^[1][3,4,5,7,8][0-9]{9}$/;
+        var bool = pattern.test(str);
+        if(bool){
+            $("#pdusername").text("");
+            boolean =true;
+            var user = $("#username").val();
+            $.ajax({
+                type:"POST",
+                url:"../api/searchUser.php",
+                data:{
+                    "username":user
+                },
+                success:function(msg){
+                    msg = JSON.parse(msg);
+                    console.log(msg)
+                    if(msg){
+                        $("#pdusername").text("账号已存在");
+                    }
+                }
+
+            })
+            
+        }else{
+            $("#pdusername").text("请输入正确有效的手机号码");
+            boolean = false;
+        }
+    })
+    $("#password1").click(function(){
+        $("#pdpassword1").text("密码长度在6-20位字符之间").css("color","black");
+    })
+    $("#password1").blur(function(){
+        var str = $(this).val();
+        pattern = /^[a-zA-Z0-9]{6,8}$/
+        var bool = pattern.test(str);
+        if(bool){
+            $("#pdpassword1").text("");
+            boolean =true;
+        }else{
+            $("#pdpassword1").text("密码过于简单,有被盗风险！").css("color","red");
+            boolean =false;
+        }
+        
+    })
+    $("#password2").blur(function(){
+        var psw1=$(this).val();
+        var psw2=$("#password1").val();
+        if( psw1==psw2){
+            $("#pdpassword2").text("");
+            boolean =true;
+        }else{
+            $("#pdpassword2").text("密码不一致");
+            boolean = false;
+        }
+
+    })
+    $("#yzk").blur(function(){
+        var str = $(this).val();
+        var yzm = $("#yzma").text();
+        if(str==yzm){
+            $("#pdyanzhengma").text("");
+            boolean =true;
+        }else{
+            $("#pdyanzhengma").text("验证码不正确");
+            boolean = false;
+        }
+    })
+
+    //随机数
+    function rond(){
+        ronds=[];
+        var random = new Array('H','I','J','K','L',0,1,2,3,4,5,9,'A','B','C','D','E','F','G','M','N','O','P','Q','R', 'S','T',6,7,8,'U','V','W','X','Y','Z');
+        //循环codeLength 我设置的4就是循环4次
+        for(var i = 0; i < 4; i++){
+            //设置随机数范围,这设置为0 ~ 36
+             var index = Math.floor(Math.random()*36);
+             //字符串拼接 将每次随机的字符 进行拼接
+             ronds.push(random[index]) ; 
+        }
+        var str = ronds.join("");
+        $("#yzma").text(str)
+        
+    }
+    rond();
+    $("#yzma").click(function(){
+        rond();
+    })
+    $("#commit").click(function(){
+        if(boolean && xieyi.checked){
+            var psw = $("#password1").val();
+            var user = $("#username").val();
+ 
+            $.ajax({
+                type:"POST",
+                url:"../api/insertuser.php",
+                data:{
+                    "username":user,
+                    "password":psw,
+                },
+                success:function(msg){
+                    msg = JSON.parse(msg);
+                    if(msg){
+                        alert("注册成功！");
+                        window.location.href="login.html"
+                    }
+                }
+            })
+        }
+    })
+
+
+
+   
+    
+</script>

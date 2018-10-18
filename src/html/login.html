@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        a{text-decoration: none;}
+        a:hover{color: red}
+        header{height: 115px;}
+        #logo{width: 1200px;height: 115px;margin: 0 auto}
+        #mainn{width: 1200px;margin: 30px auto;height: 558px;overflow: hidden;}
+        #biglogo{float: left;width: 673px;height: 558px;}
+        #bigbox{float: right;width: 340px;height: 420px;border: 1px solid #d0d0d0;margin-top: 50px;}
+        .titleheader{font-size: 14px;position: relative;margin: 0;background: #f5f5f5;height: 60px;line-height: 50px;}
+        .titleheader span:nth-child(2){display: inline-block;width: 60px;height: 60px; position: absolute;right: -25px;background: url("../images/register-icon/right-myCenter.png")no-repeat -80px;}
+        #fot{width: 1200px;margin: 0 auto}
+        .til{margin: 0 20px 20px 20px}
+        label{display: inline-block;width: 65px;font-size: 14px}
+        .cont{padding: 20px;padding-bottom: 0 ;text-align: center;}
+        p{height: 67px;text-align: left;position: relative;color: #666}
+        .pd{margin-top: 10px;margin-left: 20px;text-align: left;color: red;width: 250px}
+        input{height: 26px;width: 150px;border-radius:5px;padding: 0 40px 0 10px;}
+        .icon{position: absolute;width: 40px;height: 40px;right: 30px;top: -5px; background: url("../images/register-icon/man.png")no-repeat}
+        .key{background: url("../images/register-icon/icon_sign_up_key.png")}
+        button{width: 265px;height: 40px;margin-top: 10px;margin: 0 auto;background: #C81417;border-radius:5px;color: white; cursor: pointer;}
+        button:hover{background: #e92629}
+        .check{width: 20px;height: 20px; vertical-align: middle}
+        .checkp span:nth-child(2){display: inline-block;position: absolute; right: 0;}
+        .ct{text-align: center;}
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo"><img src="../images/register-icon/1.jpg" alt=""></div>
+    </header>
+    <main>
+        <div id="mainn">
+            <div <div id="biglogo"><img src="../images/register-icon/biglogo.jpg" alt=""></div>
+            <div id="bigbox">
+                <p class="titleheader"><span class="til"><a href="register.html">立即注册</a></span><span class="til"> </span></p>
+                <div class="cont">
+                    <p><label class="ct" for="username">账号</label><input type="text" id="username" placeholder="请输入账号"> <span class="icon"></span>   <label class="pd" id="pdusername"></label></p> 
+                    <p><label class="ct" for="password1">密码</label><input type="text" id="password1" placeholder="请输入密码"> <span class="icon key"></span> <label class="pd" id="pdpassword1"></label></p>
+                    <p class="checkp"><input type="checkbox" class="check" checked> <span>记住密码</span> <span>忘记密码</span></p>
+                    <button value="注册" id="commit">登陆</button>
+                </div>
+                
+            </div>
+        </div>
+        
+    </main>
+    <footer>
+        <div id="fot">
+            <iframe src="footer.html" frameborder="0" width="1200px" height="550px" scrolling="no"></iframe>
+        </div>
+    </footer>
+    
+</body>
+</html>
+<script src="../js/jquery-1.10.1.min.js"></script>
+<script src="../js/cookie.js"></script>
+<script>
+    var boolen = false;
+    //用户名失去焦点事件
+    $("#username").blur(function(){
+        var user = $(this).val();
+        pattern = /^[1][3,4,5,7,8][0-9]{9}$/;
+        var bool = pattern.test(user);
+        if(bool){
+            $("#pdusername").text("")
+            $.ajax({
+                type:"POST",
+                url:"../api/searchUser.php",
+                data:{
+                    "username":user
+                },
+                success:function(msg){
+                    msg = JSON.parse(msg);
+                    if(!msg){
+                        $("#pdusername").text("账号不存在！");
+                    }else{
+                        boolen = true;
+                    }
+                }
+            })
+        }else{
+            $("#pdusername").text("请输入有效手机号");
+            boolen = false;
+        }
+        
+    })
+
+    //密码失去焦点事件
+    $("#password1").blur(function(){
+        $("#pdpassword1").text("");
+    });
+    //点击登陆按钮
+    $("#commit").click(function(){
+        commit();
+        
+    });
+    //键盘回车事件
+    onkeyup=function(ev){
+        if(ev.keyCode == "13" && boolen){
+            commit();
+        }
+    }
+    function commit(){
+        if(boolen){
+            var user = $("#username").val();
+            var psd = $("#password1").val();
+            $.ajax({
+                type:"POST",
+                url:"../api/searchUser.php",
+                data:{
+                    "username":user ,
+                    "password":psd
+                },
+                success:function(msg){
+                    msg = JSON.parse(msg);
+                    if(msg){
+                        setCookie("user",user,7,"/");
+                        window.location.href="../index.html";
+
+                    }else{
+                        $("#pdpassword1").text("密码错误！");
+                    }
+                }
+            })
+        }
+    }
+</script>
