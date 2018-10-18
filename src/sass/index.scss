@@ -3,6 +3,7 @@
 }
 a{text-decoration: none;}
 li{list-style: none;}
+iframe{width: 1200px; height: auto;margin: 0 auto}
 header{
     height: 46px;
     background: #F0F0F0;
@@ -78,7 +79,7 @@ ul{
 
 #head ul:last-child{
     float: right;
-    width: 700px;
+    width: 710px;
     li{
         float: right;
         margin-left: 20px;
@@ -102,6 +103,7 @@ ul{
             position: relative;
             top: 3px;
         }
+        #cart{margin-left:5px;color: #c81417;}
     }
     li:nth-child(6){
         a{
@@ -166,6 +168,7 @@ main{
     position: absolute;
     bottom: 0;
     width: 1200px;
+    
     .body-ul{
         margin: 0 auto;
         width: 500px;
@@ -229,6 +232,7 @@ main{
         border: 1px solid #d1d1d1;
         box-shadow: 0 0 20px rgba(0,0,0,.13);
         margin-left: 28px;
+        z-index: 640;
         .title{
             width: 770px;
             height: 71px;
@@ -402,6 +406,7 @@ main{
     top: 20px;
     transform: translateX(334px);
     transition: all 1s;
+    z-index: 30;
     //按钮样式
     .asideul{
         height: 100%;
@@ -570,11 +575,29 @@ main{
 /*脚位部分*/
 
 footer{
+    // margin-top: 425px;
     background: #fff;
+    .imgbox{
+        margin-top: 450px;
+        width: auto;
+        height: auto;;
+        background: #c81417;
+        
+        li{
+            img{
+                display: block;
+                outline: none;
+                border:0;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
     #fot{
         height: 550px;
         width: 1200px;
         margin: 0 auto;
+        overflow: hidden;
     }
 
     #fot-long{
