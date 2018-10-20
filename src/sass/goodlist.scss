@@ -11,11 +11,11 @@
     margin-top: 50px;
     .main-body{
         width: 1200px;
-        height: 4120px;
+        // height: 4120px;
         margin: 0 auto;
         .introduct{
             width: 190px;
-            height: 2121px;
+            height: 1200px;
             .hot{
                 width: 190px;
                 height: 1050px;
@@ -75,6 +75,7 @@
         .content{
             width: 1000px;
             height: auto;
+            position: relative;
             .fore{
                 width: 1000px;
                 height: 42px;
@@ -131,13 +132,16 @@
             }
             .good-list{
                 width: 1000px;
-                height: 4120px;
+                height: auto;
                 .list{
+                    width: 1000px;
+                    overflow: hidden;
+                    height: 1100%;
                     li{
                         width: 242px;
                         height: 392px;
                         float: left;
-                        margin-top: 20px;
+                        margin-top: 10px;
                         padding: 5px 10px;
                         .icon{
                             width: 220px;
@@ -178,7 +182,6 @@
                                     // dd:last-child{margin: 0;}
                                 }  
                             }
-                            
                             .bt-left,.bt-right{
                                 display: block;
                                 width: 16px;
@@ -208,17 +211,30 @@
                         box-shadow: 0px 0px 5px #999;
                     }
                 }
+                .pages-box{
+                    width: 100%;
+                    height: 30px;
+                    text-align: center;
+                    line-height: 30px;
+                    .addmore{
+                        width: 500px;
+                        height: 30px;
+                        margin: 0 auto;
+                        background: #e43b3b;
+                    }
+                }
+                
             }
         }
     }
 }
-#good-foot {
+
+//脚步样式
     .good-foot{
         width: 1200px;
-        height: auto;
+        height: 550px;
         margin: 0 auto;
         iframe{
             height: 555px;
         }
     }
-}
