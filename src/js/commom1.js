@@ -7,7 +7,7 @@ var drap = $("#drap");
 var brandList = $("#caseList");
 var _pages = $("#pages");
 var powercase='A';
-var myquanlity=0;
+
 
 /** ------------------cookie登陆处理---------------------------*/
 
@@ -15,40 +15,13 @@ var id = getCookie("user");
 if(id){
     var str = "欢迎,"+id;
     $("#login").text(str);
-    $.ajax({
-        type:"POST",
-        url:"../api/searchMyCart.php",
-        data:{
-            "username":id,
-        },
-        success:function(msg){
-            msg=JSON.parse(msg);
-            var html =``;
-            for (var i = 0, len = msg.length; i <len; i++) {
-            myquanlity+=msg[i].quanlity*1;
-                html += `
-                        <li>
-                            <input type="checkbox">
-                            <a href="#"><img src="../images/${msg[i].bigimg1}" alt=""></a>
-                            <div class="fr goodcont">
-                                <a href="#"><span></span>${msg[i].title}</a>
-                                <div class="size">颜色：${msg[i].color} 尺码：${msg[i].size}</div>
-                                <div class="detail">
-                                    <span>¥</span> <span class="price">${msg[i].nowprice}</span>
-                                    <span>*</span> <span class="quanlity">${msg[i].quanlity}</span>
-                                    <span>可优惠¥</span><span class="disc">22.10</span>
-                                </div>
-                            </div>
-                            <div class="foot"></div>
-                        </li>
-                        `
-            }
-            $("#cart").text(myquanlity);
-            $("#gwl").text(myquanlity);
-            $("#aside .cartul").html(html);
-            caculation();
-        }
-    })
+    // $.ajax({
+    //     type:"POST",
+    //     url:searchUserDetail,
+    //     data:{
+
+    //     }
+    // })
 }
 
 
@@ -65,68 +38,61 @@ $("#aside .asideul li").hover(function(){
     $(em).css("display","none");
     $(this).css({"borderLeft":"","borderRadius":""})
 })
-//--------侧边栏按钮事件，1为登陆注册，
 $("#aside .asideul .flexbox").click(function(){
     $("#aside").css("transform","translateX(0)");
-
 })
 $("#close").click(function(){
     $("#aside").css("transform","translateX(334px)");
 })
 
+
+//chebox按钮事件
+var inp =  $("#aside .cartul input"); //li的所有集合
+
+$("#aside .cartul").on("click","input",function(){  //每一个数据的单选
+    caculation()
+    var arr = getrows();
+    len = inp.length;
+    if(arr.length == len ){
+        $("#aside #checkall").prop("checked","checked");
+    }else{
+        $("#aside #checkall").prop("checked","")
+    }
+})
+
+//全选
+$("#aside #checkall").click(function(){
+    console.log(this.checked)
+    if(this.checked){
+        for(var i=0;i<inp.length;i++){
+            inp[i].checked=true;
+        }
+        caculation();
+    }else{
+        for(var i=0;i<inp.length;i++){
+            inp[i].checked=false;
+        }
+        caculation();
+    }
+})
+
+
+//计算函数，计算价钱，优惠等
 function caculation(){
-    //chebox按钮事件
-    var inp =  $("#aside .cartul input"); //li的所有集合
+    var arr=getrows();
+    var quanlity=0;
+    var price=0;
+    var disc=0;
+    for(var i=0;i<arr.length;i++){
+        var li =$("#aside .cartul li").eq(arr[i]);
+        price += $(li).find(".price").text()*1;
+        quanlity +=$(li).find(".quanlity").text()*1;
+        disc += $(li).find(".disc").text()*1;
+    }
+    $("#aside .caculation .quanlity").text(quanlity);
+    $("#aside .caculation .disc").text(disc);
+    $("#aside .caculation .totall").text(price);
 
-    //一开始全选、单选全部选中，计算值
-    $(inp).attr("checked","checked");
-    $("#aside #checkall").attr("checked","checked");
-    caculation();
-
-    $("#aside .cartul").on("click","input",function(){  //每一个数据的单选
-        caculation()
-        var arr = getrows();
-        len = inp.length;
-        if(arr.length == len ){
-            $("#aside #checkall").prop("checked","checked");
-        }else{
-            $("#aside #checkall").prop("checked","")
-        }
-    })
-
-    //全选
-    $("#aside #checkall").click(function(){
-        if(this.checked){
-            for(var i=0;i<inp.length;i++){
-                inp[i].checked=true;
-            }
-            caculation();
-        }else{
-            for(var i=0;i<inp.length;i++){
-                inp[i].checked=false;
-            }
-            caculation();
-        }
-    })
-
-
-    //计算函数，计算价钱，优惠等
-    function caculation(){
-        var arr=getrows();
-        var quanlity=0;
-        var price=0;
-        var disc=0;
-        for(var i=0;i<arr.length;i++){
-            var li =$("#aside .cartul li").eq(arr[i]);
-            price += $(li).find(".price").text()*1;
-            quanlity +=$(li).find(".quanlity").text()*1;
-            disc += $(li).find(".disc").text()*1;
-        }
-        $("#aside .caculation .quanlity").text(quanlity);
-        $("#aside .caculation .disc").text(disc.toFixed(2));
-        $("#aside .caculation .totall").text(price);
-
-//-------caculation--end
 }
 
 
@@ -152,7 +118,7 @@ function getrows(){
 
 
 
-}
+
 
 
 //点击回到顶部函数

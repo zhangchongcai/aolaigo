@@ -26,7 +26,7 @@
      $row=$res->fetch_all(MYSQLI_ASSOC);
      $count = count($row);
      $row = array_slice($row,($page-1)*10,10);
-     $data =array("page"=>ceil($count/35),"all"=>$count,"quanlity"=>$row,"number"=>10);
+     $data =array("page"=>ceil($count/10),"all"=>$count,"quanlity"=>$row,"number"=>10);
  //  
 //   var_dump($row);
  //  

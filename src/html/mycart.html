@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>商品详情页</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/mycart.css">
+    <link rel="stylesheet" href="../lib/gouwuche/css/carts.css">
+    <link rel="stylesheet" href="../lib/gouwuche/css/reset.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/goodlist.css">
-    <link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
     <div id="headerlogo">
@@ -40,7 +41,7 @@
                 <li><a href="#">订单查询</a></li>
                 <li><i class="cart"></i> <a href="">购物车</a><span id="cart">0</span></li>
                 <li><a href="#">免费注册</a></li>
-                <li><a href="login.html" id="login">请登陆</a></li>
+                <li><a href="#" id="login">请登陆</a></li>
                 <li><span>您好,欢迎来到奥特莱</span></li>
             </ul>
         </div>
@@ -63,7 +64,7 @@
                     </div>
                     <div id="mian-body">
                         <ul class="body-ul">
-                            <li><a href="../index.html" class="active">首页</a></li>
+                            <li><span href="../index.html" class="actives">首页</span></li>
                             <li><a href="#" class="active">实体店</a></li>
                             <li><a href="#" class="active">关于我们</a></li>
                             <li id="drapli">
@@ -467,195 +468,119 @@
             </div>
             
     </main>
-    <div id="aside" >
-            <ul class="asideul fl">
-                <li class="flexbox"><em>个人中心</em> <i></i></li>
-                <li class="flexbox"><em>购物车</em> <i></i><span id="gwl">13</span></li>
-                <li class="flexbox"><em>收藏</em> <i></i></li>
-                <li class="flexbox"><em>优惠券</em> <i></i></li>
-                <li class="flexbox"><em>我的足迹</em> <i></i></li>
-                <li class="flexbox"><em>客服联系</em> <i></i></li>
-                <li id="returntop"><em>返回顶部</em> <i></i></li>
-            </ul>
-            <div class="right-cot fr">
-                <div class="close" >
-                    <div class="checkbox fl"><input type="checkbox" id="checkall" ><label for="checkall">全选</label> </div>
-                    <div class="fr" id="close">x</div> 
-                </div>
-                <div class="goodbox">
-                    <ul class="cartul">
-                        <a href="#" id="zxcvb">购物车里空空如也,赶紧去抢购吧！</a>
-                        <li>
-                            <input type="checkbox">
-                            <a href="#"><img src="../images/good/yifu-1.JPG" alt=""></a>
-                            <div class="fr goodcont">
-                                <a href="#"><span></span>Kappa/卡帕 Kappa/卡帕 男士长袖立领外套</a>
-                                <div class="size">颜色：882 尺码：L</div>
-                                <div class="detail">
-                                    <span>¥</span> <span class="price">299.00</span>
-                                    <span>*</span> <span class="quanlity">1</span>
-                                    <span>可优惠¥</span><span class="disc">0.00</span>
-                                </div>
-                            </div>
-                            <div class="foot"></div>
-                        </li>
-                        <li>
-                            <input type="checkbox">
-                            <a href="#"><img src="../images/good/yifu-1.JPG" alt=""></a>
-                            <div class="fr goodcont">
-                                <a href="#"><span></span>Kappa/卡帕 Kappa/卡帕 男士长袖立领外套</a>
-                                <div class="size">颜色：882 尺码：L</div>
-                                <div class="detail">
-                                    <span>¥</span> <span class="price">299.00</span>
-                                    <span>*</span> <span class="quanlity">1</span>
-                                    <span>可优惠¥</span><span class="disc">0.00</span>
-                                </div>
-                            </div>
-                            <div class="foot"></div>
-                        </li>
-                        <li>
-                            <input type="checkbox">
-                            <a href="#"><img src="../images/good/yifu-1.JPG" alt=""></a>
-                            <div class="fr goodcont">
-                                <a href="#"><span></span>Kappa/卡帕 Kappa/卡帕 男士长袖立领外套</a>
-                                <div class="size">颜色：882 尺码：L</div>
-                                <div class="detail">
-                                    <span>¥</span> <span class="price">299.00</span>
-                                    <span>*</span> <span class="quanlity">1</span>
-                                    <span>可优惠¥</span><span class="disc">0.00</span>
-                                </div>
-                            </div>
-                            <div class="foot"></div>
-                        </li>
-                        <li>
-                            <input type="checkbox">
-                            <a href="#"><img src="../images/good/yifu-1.JPG" alt=""></a>
-                            <div class="fr goodcont">
-                                <a href="#"><span></span>Kappa/卡帕 Kappa/卡帕 男士长袖立领外套</a>
-                                <div class="size">颜色：882 尺码：L</div>
-                                <div class="detail">
-                                    <span>¥</span> <span class="price">299.00</span>
-                                    <span>*</span> <span class="quanlity">1</span>
-                                    <span>可优惠¥</span><span class="disc">0.00</span>
-                                </div>
-                            </div>
-                            <div class="foot"></div>
-                        </li>
-                        
-                    </ul>
-                    <div class="caculate">
-                        <div class="caculation">
-                            <span class="yixuan">已选<span class="quanlity">9</span>件</span> 
-                            <span class="yisheng">已省：¥<span class="disc">183.20</span></span>
-                            <span class="heji">合计：¥<span class="totall">183.20</span></span> 
+    <div id="mycart-cont">
+        <div class="mycart-cont">
+                <section class="cartMain">
+                        <div class="cartMain_hd">
+                            <ul class="order_lists cartTop">
+                                <li class="list_chk">
+                                    <!--所有商品全选-->
+                                    <input type="checkbox" id="all" class="whole_check">
+                                    <label for="all"></label>
+                                    全选
+                                </li>
+                                <li class="list_con">商品信息</li>
+                                <li class="list_info">商品参数</li>
+                                <li class="list_price">单价</li>
+                                <li class="list_amount">数量</li>
+                                <li class="list_sum">金额</li>
+                                <li class="list_op">操作</li>
+                            </ul>
                         </div>
-                        <button class="commit">去购物车结算</button>
-                    </div>
-                </div>
-            </div>
-    </div>
-    <div id="main-body">
-        <div class="main-body">
-            <div class="introduct fl">
-                <ul class="hot">
-                    <p class="hottil"><span>热门销售</span><span>HOT</span></p>
-                    <li>
-                        <div class="icon">
-                            <a href="" class="active"><img src="../images/good/hot-1.jpg" alt=""></a> 
-                        </div>    
-                        <p class="til"><a href="">德尔惠 2017年夏季新款啊沙发萨法萨法沙发韩</a> </p>
-                        <p class="price">￥50</p>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <a href="" class="active"><img src="../images/good/hot-1.jpg" alt=""></a> 
-                        </div>    
-                        <p class="til"><a href="">德尔惠 2017年夏季新款啊沙发萨法萨法沙发韩</a> </p>
-                        <p class="price">￥50</p>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <a href="" class="active"><img src="../images/good/hot-1.jpg" alt=""></a> 
-                        </div>    
-                        <p class="til"><a href="">德尔惠 2017年夏季新款啊沙发萨法萨法沙发韩</a> </p>
-                        <p class="price">￥50</p>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <a href="" class="active"><img src="../images/good/hot-1.jpg" alt=""></a> 
-                        </div>    
-                        <p class="til"><a href="">德尔惠 2017年夏季新款啊沙发萨法萨法沙发韩</a> </p>
-                        <p class="price">￥50</p>
-                    </li>
-                    
-                </ul>
-                <!-- <ul class="new"></ul> -->
-            </div>
-            <div class="content fr">
-                <ul class="fore">
-                    <li>
-                        <dl>
-                            <dd>排序</dd>
-                            <dd class="btn"><a  class="ac dis  act jt-up">综合排序</a></dd>
-                            <dd class="btn"><a  class="ac dis ">销量</a></dd>
-                            <dd class="btn"><a  class="ac dis ">价格</a></dd>
-                            <dd class="btn"><a  class="ac dis ">折扣</a></dd>
-                            <dd class="btn"><a  class="ac dis ">上架时间</a></dd>
-                            <dd><input type="checkbox">仅显示有货</dd>
-                            <dd><input type="checkbox">自营</dd>
-                            <dd><input type="checkbox">海外购</dd>
-                            <dd><input type="checkbox">优惠</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <dl>
-                            <dd>共有327个商品<span></span></dd>
-                            <dd>1/9</dd> 
-                            <dd><button value="">上一页</button></dd>
-                            <dd>......</dd>
-                            <dd><button value="">下一页</button></dd>
-                        </dl>
-                    </li>
-                </ul>
-                <div class="good-list clearfloat">
-                    <ul class="list">
-                        <!-- <li>
-                            <div class="icon"><img src="../images/yifu1/bigimg1-1.jpg" alt=""></div>
-                            <div class="icon-box">
-                                <a class="bt-left"></a>
-                                <div class="list-box">
-                                    <dl class="icon-list">
-                                        <dd><img src="../images/yifu1/1-1.jpg" alt=""></dd>
-                                        <dd><img src="../images/yifu1/1-2.jpg" alt=""></dd>
-                                        <dd><img src="../images/yifu1/1-3.jpg" alt=""></dd>
-                                        <dd><img src="../images/yifu1/1-4.jpg" alt=""></dd>
-                                        <dd><img src="../images/yifu1/1-1.jpg" alt=""></dd>
-                                    </dl>
-                                </div>
-                                    
-                                <a class="bt-right"></a>
+                
+                        <div class="cartBox">
+
+                            <div class="order_content">
+                                <ul class="order_lists">
+                                    <li class="list_chk">
+                                        <input type="checkbox" id="checkbox_8" class="son_check">
+                                        <label for="checkbox_8"></label>
+                                    </li>
+                                    <li class="list_con">
+                                        <div class="list_img"><a href="javascript:;"><img src="../lib/gouwuche/images/1.png" alt=""></a></div>
+                                        <div class="list_text"><a href="javascript:;">夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男</a></div>
+                                    </li>
+                                    <li class="list_info">
+                                        <p>规格：默认</p>
+                                        <p>尺寸：16*16*3(cm)</p>
+                                    </li>
+                                    <li class="list_price">
+                                        <p class="price">￥1980</p>
+                                    </li>
+                                    <li class="list_amount">
+                                        <div class="amount_box">
+                                            <a href="javascript:;" class="reduce reSty">-</a>
+                                            <input type="text" value="1" class="sum">
+                                            <a href="javascript:;" class="plus">+</a>
+                                        </div>
+                                    </li>
+                                    <li class="list_sum">
+                                        <p class="sum_price">￥1980</p>
+                                    </li>
+                                    <li class="list_op">
+                                        <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
+                                    </li>
+                                </ul>
+                                <ul class="order_lists">
+                                    <li class="list_chk">
+                                        <input type="checkbox" id="checkbox_8" class="son_check">
+                                        <label for="checkbox_8"></label>
+                                    </li>
+                                    <li class="list_con">
+                                        <div class="list_img"><a href="javascript:;"><img src="../lib/gouwuche/images/1.png" alt=""></a></div>
+                                        <div class="list_text"><a href="javascript:;">夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男</a></div>
+                                    </li>
+                                    <li class="list_info">
+                                        <p>规格：默认</p>
+                                        <p>尺寸：16*16*3(cm)</p>
+                                    </li>
+                                    <li class="list_price">
+                                        <p class="price">￥1980</p>
+                                    </li>
+                                    <li class="list_amount">
+                                        <div class="amount_box">
+                                            <a href="javascript:;" class="reduce reSty">-</a>
+                                            <input type="text" value="1" class="sum">
+                                            <a href="javascript:;" class="plus">+</a>
+                                        </div>
+                                    </li>
+                                    <li class="list_sum">
+                                        <p class="sum_price">￥1980</p>
+                                    </li>
+                                    <li class="list_op">
+                                        <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
+                                    </li>
+                                </ul>
                             </div>
-                            <p class="price"><span class="nowprice">￥149.00</span><span class="beforeprice">￥299.00</span></p>
-                            <p class="title"><a href="">龙狮戴尔 男士春秋长袖T恤</a> </p>
-                        </li> -->
-                        
-                    </ul>
-                    <div class="pages-box" >
-                        <button class="addmore" data-num="1">点击加载更多</button>
-                    </div>
-                </div>
-            </div>
+                        </div>
+                        <!--底部-->
+                        <div class="bar-wrapper">
+                            <div class="bar-right">
+                                <div class="piece">已选商品<strong class="piece_num">0</strong>件</div>
+                                <div class="totalMoney">共计: <strong class="total_text">0.00</strong></div>
+                                <div class="calBtn"><a href="javascript:;">结算</a></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="model_bg"></section>
+                    <section class="my_model">
+                        <p class="title">删除宝贝<span class="closeModel">X</span></p>
+                        <p>您确认要删除该宝贝吗？</p>
+                        <div class="opBtn"><a href="javascript:;" class="dialog-sure">确定</a><a href="javascript:;" class="dialog-close">关闭</a></div>
+                    </section>
         </div>
     </div>
-    <div class="good-foot">
-        <iframe src="footer.html" frameborder="0" srcool="no" ></iframe>
+    <!--内容区end -->
+    <div id="mycart-foot">
+        <div class="mycart-foot">
+            <iframe src="./footer.html" frameborder="0" scroll="no" class="if"></iframe>
+        </div>
     </div>
-    
-    
 </body>
 </html>
 <script src="../js/jquery-1.10.1.min.js"></script>
 <script src="../js/cookie.js"></script>
 <script src="../js/commom.js"></script>
-<!-- <script src="../js/index.js"></script> -->
-<script src="../js/goods.js"></script>
+<script src="../js/myCart.js"></script>
+<!-- <script src="../lib/gouwuche/js/carts.js"></script> -->
+<script src="../lib/gouwuche/js/carts.1.js"></script>

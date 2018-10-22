@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>aolaigo首页</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/opacity.css">
     <style>
@@ -40,7 +40,7 @@
                 <li><a href="#">我的收藏</a></li>
                 <li><a href="#">订单查询</a></li>
                 <li><i class="cart"></i> <a href="">购物车</a><span id="cart">13</span></li>
-                <li><a href="#">免费注册</a></li>
+                <li><a href="html/register.html">免费注册</a></li>
                 <li><a href="#" id="login">请登陆</a></li>
                 <li><span>您好,欢迎来到奥特莱</span></li>
             </ul>
@@ -484,73 +484,17 @@
                 <div class="fr" id="close">x</div> 
             </div>
             <div class="goodbox">
+                    <a href="html/goodlist.html" id="zxcvb">购物车里空空如也,赶紧去抢购吧！</a>
                 <ul class="cartul">
-                    <a href="#" id="zxcvb">购物车里空空如也,赶紧去抢购吧！</a>
-                    <li>
-                        <input type="checkbox">
-                        <a href="#"><img src="images/good/yifu-1.JPG" alt=""></a>
-                        <div class="fr goodcont">
-                            <a href="#"><span></span>Kappa/卡帕 Kappa/卡帕 男士长袖立领外套</a>
-                            <div class="size">颜色：882 尺码：L</div>
-                            <div class="detail">
-                                <span>¥</span> <span class="price">299.00</span>
-                                <span>*</span> <span class="quanlity">1</span>
-                                <span>可优惠¥</span><span class="disc">0.00</span>
-                            </div>
-                        </div>
-                        <div class="foot"></div>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <a href="#"><img src="images/good/yifu-1.JPG" alt=""></a>
-                        <div class="fr goodcont">
-                            <a href="#"><span></span>Kappa/卡帕 Kappa/卡帕 男士长袖立领外套</a>
-                            <div class="size">颜色：882 尺码：L</div>
-                            <div class="detail">
-                                <span>¥</span> <span class="price">299.00</span>
-                                <span>*</span> <span class="quanlity">1</span>
-                                <span>可优惠¥</span><span class="disc">0.00</span>
-                            </div>
-                        </div>
-                        <div class="foot"></div>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <a href="#"><img src="images/good/yifu-1.JPG" alt=""></a>
-                        <div class="fr goodcont">
-                            <a href="#"><span></span>Kappa/卡帕 Kappa/卡帕 男士长袖立领外套</a>
-                            <div class="size">颜色：882 尺码：L</div>
-                            <div class="detail">
-                                <span>¥</span> <span class="price">299.00</span>
-                                <span>*</span> <span class="quanlity">1</span>
-                                <span>可优惠¥</span><span class="disc">0.00</span>
-                            </div>
-                        </div>
-                        <div class="foot"></div>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <a href="#"><img src="images/good/yifu-1.JPG" alt=""></a>
-                        <div class="fr goodcont">
-                            <a href="#"><span></span>Kappa/卡帕 Kappa/卡帕 男士长袖立领外套</a>
-                            <div class="size">颜色：882 尺码：L</div>
-                            <div class="detail">
-                                <span>¥</span> <span class="price">299.00</span>
-                                <span>*</span> <span class="quanlity">1</span>
-                                <span>可优惠¥</span><span class="disc">0.00</span>
-                            </div>
-                        </div>
-                        <div class="foot"></div>
-                    </li>
                     
                 </ul>
                 <div class="caculate">
                     <div class="caculation">
-                        <span class="yixuan">已选<span class="quanlity">9</span>件</span> 
-                        <span class="yisheng">已省：¥<span class="disc">183.20</span></span>
-                        <span class="heji">合计：¥<span class="totall">183.20</span></span> 
+                        <span class="yixuan">已选<span class="quanlity">0</span>件</span> 
+                        <span class="yisheng">已省：¥<span class="disc">0</span></span>
+                        <span class="heji">合计：¥<span class="totall">0</span></span> 
                     </div>
-                    <button class="commit">去购物车结算</button>
+                    <button class="commit">去购物车结算 </button>
                 </div>
             </div>
         </div>
@@ -559,8 +503,8 @@
 </div>
     <div id="carousel-big" class="carousel-big ">
         <div id="carousel-center" class="carousel-center clearfix">
-            <a href="" class="carousel-banner" style="background: url('images/index-img/silder1.jpg') no-repeat center center"></a>
-            <a href="" class="carousel-banner" style="background: url('images/index-img/slider2.png') no-repeat center center"></a>
+            <a href="html/goodlist.html" class="carousel-banner" style="background: url('images/index-img/silder1.jpg') no-repeat center center"></a>
+            <a href="html/goodlist.html" class="carousel-banner" style="background: url('images/index-img/slider2.png') no-repeat center center"></a>
         </div>
         <a href="javascript:;" id="carousel-left-btn"></a>
         <a href="javascript:;" id="carousel-right-btn"></a>
@@ -728,4 +672,7 @@
     });
 
     //轮播图end
+    $("#aside .commit").click(function(){
+        window.location.href="html/mycart.html";
+    })
 </script>

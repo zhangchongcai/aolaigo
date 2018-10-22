@@ -1,0 +1,29 @@
+//内容区块样式
+#deti-cont{
+    width: 100%;
+    height: auto;
+    .deti-cont{
+        width: 1200px;
+        height: 900px;
+        background:#666;
+        margin: 10px auto;
+        
+    }
+}
+
+
+
+//尾部样式
+#detail-foot{
+    width: auto;
+    height: 100%;
+    .detail-foot{
+        width: 1200px;
+        height: 550px;
+        margin: 0 auto;
+        iframe{
+            width: 1200px;
+            height: 550px;;
+        }
+    }
+}

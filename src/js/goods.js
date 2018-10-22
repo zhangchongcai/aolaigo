@@ -2,7 +2,7 @@
 //刷新页面调用ajax
 var sort=1;
 var way = "asc"; 
-callAjax(sort,way);
+callAjax(sort,way,false);
 
 //排序按钮事件处理
 var btnbool =[true,true,true,true,true,true]; // 第一个true作废
@@ -14,7 +14,7 @@ $("#main-body .fore").on("click",".btn",function(){
         btnbool[ind]=false;
          sort = ind;
          way = "asc";
-        callAjax(ind,way);
+        callAjax(ind,way,false);
     }else{
         console.log(btnbool[ind]);
         $("#main-body .fore .btn .ac").removeClass("act jt-down jt-up");
@@ -22,12 +22,12 @@ $("#main-body .fore").on("click",".btn",function(){
         btnbool[ind]=true;
          sort = ind;
          way = "DESC";
-        callAjax(ind,way);
+        callAjax(ind,way,false);
     }
     
 })
 //ajax 封装函数
-function callAjax(sort,way){
+function callAjax(sort,way,bool){
     $.ajax({
         type:"GET",
         url:"../api/goods.php",
@@ -37,15 +37,15 @@ function callAjax(sort,way){
         },
         success:function(msg){
             msg = JSON.parse(msg);
-            creatHTML(msg);
+            creatHTML(msg,bool);
         }
     })
 }
 
 
-
-//creatHTML函数
-function creatHTML(msg){
+ 
+//creatHTML函数   
+function creatHTML(msg,bool){  // 第一个参数是数据，第二个参数为false则清空列表生成新列表，为true进行累加列表
     data = msg.quanlity;
     var len = data.length;
     var html ="";
@@ -53,16 +53,15 @@ function creatHTML(msg){
     for(var i=0;i<len;i++){
         html += `
                     <li>
-                    <div class="icon"><img src="../images/${data[i].bigimg}" alt=""></div>
+                    <div class="icon"><img src="../images/${data[i].bigimg1}" alt=""></div>
                     <div class="icon-box">
                         <a class="bt-left"></a>
                         <div class="list-box">
                             <dl class="icon-list">
-                                <dd><img src="../images/${data[i].img1}" alt=""></dd>
-                                <dd><img src="../images/${data[i].img2}" alt=""></dd>
-                                <dd><img src="../images/${data[i].img3}" alt=""></dd>
-                                <dd><img src="../images/${data[i].img4}" alt=""></dd>
-                                <dd><img src="../images/${data[i].img5}" alt=""></dd>
+                                <dd><img src="../images/${data[i].bigimg1}" alt=""></dd>
+                                <dd><img src="../images/${data[i].bigimg2}" alt=""></dd>
+                                <dd><img src="../images/${data[i].bigimg3}" alt=""></dd>
+                                <dd><img src="../images/${data[i].bigimg4}" alt=""></dd>
                             </dl>
                         </div>
                             
@@ -73,9 +72,13 @@ function creatHTML(msg){
                 </li>
             `
     }
-    var before_html = $(".good-list .list").html();
-    before_html+=html;
-    $(".good-list .list").html(before_html);
+    if(bool){
+            var before_html = $(".good-list .list").html();
+            before_html += html;
+            $(".good-list .list").html(before_html);
+    }else{
+        $(".good-list .list").html(html);
+    }
 }
 
 
@@ -89,12 +92,11 @@ function creatHTML(msg){
     // })
     //小图片的hover事件
     $("#main-body").on("mouseout mouseover","dd",function(event){
-        
         if(event.type == "mouseover"){
             var ind = $(this).index();
             $(this).css("borderColor","red").siblings().css("borderColor","");
             var bigimg = $(this).parent().parent().parent().prev().children();
-            var url = "../images/yifu1/bigimg"+(ind*1+1)+"-"+(ind*1+1)+".jpg";
+            var url = $(this).children().prop("src")
             $(bigimg).attr("src",url);
 
         }
@@ -121,7 +123,7 @@ function creatHTML(msg){
         }
     }
 
-//点击加载更多
+//点击加载更多  
 $("#main-body .pages-box .addmore").on("click",function(){
     var num = $(this).attr("data-num");
     num++;
@@ -134,9 +136,9 @@ $("#main-body .pages-box .addmore").on("click",function(){
             "way":way,
             "page":num,
         },
-        success:function(msg){
+        success: function (msg) {
             msg = JSON.parse(msg);
-            creatHTML(msg);
+            creatHTML(msg,true); 
         }
     })
     
